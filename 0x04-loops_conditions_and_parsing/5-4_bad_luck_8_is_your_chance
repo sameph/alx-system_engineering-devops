@@ -11,7 +11,7 @@ do
 	if [ $counter = 3 ]
 	then
 		echo "bad luck"
-	elif [ $counter = 8 ]
+	elif [ $counter = 7 ]
 	then
 		echo "good luck"
 	else
