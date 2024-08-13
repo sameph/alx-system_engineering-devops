@@ -1,16 +1,16 @@
 #!/usr/bin/python3
-""" module for task 0"""
-
+""" Exporting csv files"""
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """a function that queries the Reddit API and returns the number of subscribers"""
-
-    sub_info = requests.get("https://www.reddit.com/r/[]/about.json".format(subreddit), headers = {"User-Agent": "My-User_Agent"}, allow_redirects=False)
-
-    if sub_info.status_code >= 300:
-        return 0
-
-    return sub_info.json().get("data").get("subscribers")
-
+    """Read reddit API and return number subscribers """
+    headers = {'user-agent': '/u/alx_advanced_API'}
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    client = requests.session()
+    client.headers = headers
+    r = client.get(url, allow_redirects=False)
+    if r.status_code == 200:
+        return (r.json()["data"]["subscribers"])
+    else:
+        return(0)
